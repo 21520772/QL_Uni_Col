@@ -31,14 +31,16 @@ int main()
 		{
 			for (int i = 0; i < n; i++) 
 			{
+				cout << "\nNhap thong tin sinh vien thu " << i + 1 << ":";
 				cout << "\nChon he dao tao: ";
-				cout << "\nNhap thong tin sinh vien thu " << i + 1 << " :";
+				
 				do 
 				{
 					cout << "\n1. Cao Dang";
 					cout << "\n2. Dai hoc";
 					cout << "\n0. Cancel" << endl;
 					cin >> option;
+					
 					if (option == 0) 
 						break;
 			
@@ -71,6 +73,7 @@ int main()
 							maxUniversityGPA = arr[i]->getGPA();
 							maxUniversityIndex = i;
 						}
+						break;
 					default:
 						break;
 					}
@@ -85,9 +88,17 @@ int main()
 	cout << "\nSo luong sinh vien he Cao Dang tot nghiep: " << CollegeStudent::collegeGraduation;
 	cout << "\nSo luong sinh vien he Dai Hoc tot nghiep: " << UniversityStudent::universityGraduation;
 	cout << endl;
-	cout << "\nDiem trung binh cao nhat - Cao Dang " << maxCollegeIndex + 1 << " :";
-	arr[maxCollegeIndex]->Output();
-	cout << "\nDiem trung binh cao nhat - Dai Hoc  " << maxUniversityIndex + 1 << " :";
-	arr[maxUniversityIndex]->Output();
+	if (maxCollegeIndex == -1) cout << "Khong co sinh Cao Dang trong danh sach";
+	else
+	{
+		cout << "\nDiem trung binh cao nhat - Cao Dang: ";
+		arr[maxCollegeIndex]->Output();
+	}
+	if (maxUniversityIndex == -1) cout << "Khong co sinh Dai Hoc trong danh sach";
+	else
+	{
+		cout << "\nDiem trung binh cao nhat - Dai Hoc:";
+		arr[maxUniversityIndex]->Output();
+	}
 	return 0;
 }
